@@ -12,8 +12,9 @@
 		<div align="center">
 			<h1>Successfully Registered !!</h1>
 			<p>
-				If Already Register..<a href="LogIn.jsp">Log In</a>
+				Register Again<a href="registerWindow.jsp">Sign up</a>
 			</p>
+			<p>If Already Register..<a href="LogIn.jsp">Log In</a></p>
 		</div>
 	</form>
 </body>

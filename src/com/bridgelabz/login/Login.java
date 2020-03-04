@@ -16,19 +16,18 @@ import com.bridgelabz.connection.LoginDataAccess;
 @SuppressWarnings("serial")
 @WebServlet("/Login")
 public class Login extends HttpServlet {
-	LoginDataAccess loginDataAccess=new LoginDataAccess();
+	LoginDataAccess loginDataAccess = new LoginDataAccess();
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String uName = request.getParameter("uName");
 		String pswd = request.getParameter("pswd");
 		if (loginDataAccess.checkDetails(uName, pswd)) {
-			HttpSession session=request.getSession();
+			HttpSession session = request.getSession();
 			session.setAttribute("uName", uName);
 			String location = "Form1.jsp";
 			response.sendRedirect(location);
-		}
-		else {
+		} else {
 			response.sendRedirect("LogIn.jsp");
 		}
 	}

@@ -11,7 +11,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-
 import com.bridgelabz.connection.LoginDataAccess;
 
 /**
@@ -19,25 +18,31 @@ import com.bridgelabz.connection.LoginDataAccess;
  */
 @WebFilter("/Login")
 public class loginFilter implements Filter {
-	LoginDataAccess loginDataAccess=new LoginDataAccess();
-	public void destroy() {
-	
+	LoginDataAccess loginDataAccess = new LoginDataAccess();
+
+	public void init(FilterConfig fConfig) throws ServletException {
+
 	}
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		PrintWriter printWriter=response.getWriter();
-		//HttpServletRequest httpServletRequest=(HttpServletRequest) request;
+
+	/**
+	 * The doFilter method of the Filter is called by the container each time a
+	 * request/response pair is passed through the chain due to a client request for
+	 * a resource at the end of the chain
+	 */
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
+		PrintWriter printWriter = response.getWriter();
 		String uName = request.getParameter("uName");
 		String pswd = request.getParameter("pswd");
 		if (loginDataAccess.checkDetails(uName, pswd)) {
 			chain.doFilter(request, response);
-		}
-		else {
+		} else {
 			printWriter.println("Invalid username or password");
 		}
 	}
 
-	public void init(FilterConfig fConfig) throws ServletException {
-	
+	public void destroy() {
+
 	}
 
 }

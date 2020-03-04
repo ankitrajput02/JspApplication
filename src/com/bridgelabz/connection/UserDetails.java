@@ -1,5 +1,9 @@
 package com.bridgelabz.connection;
 
+/**
+ * Getter Setter methods to read and write data
+ *
+ */
 public class UserDetails {
 	String firstName;
 	String lastName;

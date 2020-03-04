@@ -15,13 +15,11 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/LogOut")
 public class LogOut extends HttpServlet {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session=request.getSession();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		session.removeAttribute("uName");
 		session.invalidate();
-		//response.sendRedirect("LogIn.jsp");
 		response.sendRedirect("LogIn.jsp");
 	}
-
-
 }
